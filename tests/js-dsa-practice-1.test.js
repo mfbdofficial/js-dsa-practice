@@ -30,7 +30,13 @@
 /*
 import sum from '../src/js-dsa-practice-1.js';
 */
-import {sum, substraction} from '../src/js-dsa-practice-1.js';
+import {
+    sum, 
+    substraction, 
+    fibonacci, fibonacci1, 
+    factorial, factorial1,
+    isPrime, isPrime1, isPrime2
+} from '../src/js-dsa-practice-1.js';
 
 test('should add two numbers correctly:', () => {
     expect(sum(2, 3)).toBe(5);
@@ -39,11 +45,55 @@ test('should add two numbers correctly:', () => {
 test('should substract two numbers correctly:', () => {
     expect(substraction(5, 4)).toBe(1);
     expect(substraction(7, 21)).toBe(-14);
-})
+});
 test('this is the third test:', () => {
     expect(sum(8, 15)).toBe(23);
     expect(substraction(7, 21)).toBe(-14);
-})
+});
+test('Fibonacci:', () => {
+    expect(fibonacci(7)).toStrictEqual([0, 1, 1, 2, 3, 5, 8]);
+    expect(fibonacci(1)).toStrictEqual([0]);
+    expect(fibonacci(2)).toStrictEqual([0, 1]);
+    expect(fibonacci1(7)).toStrictEqual([0, 1, 1, 2, 3, 5, 8]);
+    //expect(fibonacci1(1)).toStrictEqual([0]);
+    expect(fibonacci1(2)).toStrictEqual([0, 1]);
+});
+test('Factorial:', () => {
+    expect(factorial(4)).toBe(24);
+    expect(factorial(5)).toBe(120);
+    expect(factorial(0)).toBe(1);
+    expect(factorial(1)).toBe(1);
+    expect(factorial1(4)).toBe(24);
+    expect(factorial1(5)).toBe(120);
+    expect(factorial1(0)).toBe(1);
+    expect(factorial1(1)).toBe(1);
+});
+test('Prime Number:', () => {
+    expect(isPrime(-1)).toBe(false);
+    expect(isPrime(0)).toBe(false);
+    expect(isPrime(1)).toBe(false);
+    expect(isPrime(2)).toBe(true);
+    expect(isPrime(3)).toBe(true);
+    expect(isPrime(4)).toBe(false);
+    expect(isPrime(5)).toBe(true);
+    expect(isPrime(6)).toBe(false);
+    expect(isPrime1(-1)).toBe(false);
+    expect(isPrime1(0)).toBe(false);
+    expect(isPrime1(1)).toBe(false);
+    expect(isPrime1(2)).toBe(true);
+    expect(isPrime1(3)).toBe(true);
+    expect(isPrime1(4)).toBe(false);
+    expect(isPrime1(5)).toBe(true);
+    expect(isPrime1(6)).toBe(false);
+    expect(isPrime2(-1)).toBe(false);
+    expect(isPrime2(0)).toBe(false);
+    expect(isPrime2(1)).toBe(false);
+    expect(isPrime2(2)).toBe(true);
+    expect(isPrime2(3)).toBe(true);
+    expect(isPrime2(4)).toBe(false);
+    expect(isPrime2(5)).toBe(true);
+    expect(isPrime2(6)).toBe(false);
+});
 
 //CJS (Common JS) syntax
 /*
