@@ -100,6 +100,73 @@ export function isPrime2(n) {
     return true; //(1)
 } //Big-O Time Complexity = sqrt(n) + 2 = sqrt(n) -> O(sqrt(n)) - Linear
 
+//Power of Two
+export function isPowerOfTwo(n) {
+    if (n < 1) {
+        return false; //(1)
+    } else if (n === 1) {
+        return true; //(1)
+    }
+    let accumulation = 1; //(1)
+    for (let i = 1; accumulation <= n; i++) { //no loop just based on n, but based on n "with length decreasing for every loop"
+        accumulation *= 2; //(1 log n)
+        if (accumulation == n) {
+            return true; //(1 log n)
+        }
+    }
+    return false; //(1)
+} //remember when we do Big-O notation, the rule is like this :
+//- adds or subtracts -> i++ or i-- -> O(n)
+//- multiplies or divides -> i *= 2 or i /= 2 -> O(log n) 
+//- nested loop -> O(n^2)
+//Big-O Time Complexity = 2 log n + 4 = (2 log n) -> O(log n) - Logaritmic
+//Pro solution 1
+export function isPowerOfTwo1(n) {
+    if (n < 1) {
+        return false; //(1)
+    }
+    while (n > 1) { 
+        if (n % 2 !== 0) {
+            return false; //(1 log n)
+        }
+        n = n/2; //(1 log n) -> reducing the input sized n by half make it the loop 2 times less
+    } //that's why this is considered as log n in Big-O Time Complexity
+    return true; //(1)
+} //Big-O Time Complexity = 2 log n + 2 = (2 log n) -> O(log n) - Logaritmic
+//Pro solution 2
+export function isPowerOfTwoBitWise(n) {
+    if (n < 1) { 
+        return false; //(1)
+    }
+    return (n & (n - 1)) === 0; //(1)
+} //Big-O Time Complexity = 2 -> O(2) - Constant
+
+//Recursive Fibonacci Sequence
+export function recursiveFibonacci(n) {
+    if (n == 1) {
+        return 0;
+    } else if (n == 2) {
+        return 1
+    }
+    return recursiveFibonacci(n - 2) + recursiveFibonacci(n - 1);
+} //Big-O Time Complexity = O(2^n) - Recursive
+//Pro solution 1
+export function recursiveFibonacci1(n) {
+    if (n < 2) {
+        return n;
+    } 
+    return recursiveFibonacci1(n - 2) + recursiveFibonacci1(n - 1); //everytime recursive happen, 2 function more is execute
+} //Big-O Time Complexity = O(2^n) - Recursive
+
+//Recursive Factorial of a Number
+export function recursiveFactorial(n) {
+    if (n === 0) {
+        return 1;
+    }
+    return n * recursiveFactorial(n - 1); //1 recursive execute based from how much the n is
+} //Big-O Time Complexity = O(n) - Recursive
+
+
 //CJS (Common JS) syntax
 /*
 function sum(a, b) {

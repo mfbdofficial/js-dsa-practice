@@ -35,7 +35,10 @@ import {
     substraction, 
     fibonacci, fibonacci1, 
     factorial, factorial1,
-    isPrime, isPrime1, isPrime2
+    isPrime, isPrime1, isPrime2,
+    isPowerOfTwo, isPowerOfTwo1, isPowerOfTwoBitWise,
+    recursiveFibonacci, recursiveFibonacci1,
+    recursiveFactorial
 } from '../src/js-dsa-practice-1.js';
 
 test('should add two numbers correctly:', () => {
@@ -93,6 +96,55 @@ test('Prime Number:', () => {
     expect(isPrime2(4)).toBe(false);
     expect(isPrime2(5)).toBe(true);
     expect(isPrime2(6)).toBe(false);
+});
+test('Power of Two:', () => {
+    expect(isPowerOfTwo(-1)).toBe(false)
+    expect(isPowerOfTwo(1)).toBe(true);
+    expect(isPowerOfTwo(2)).toBe(true);
+    expect(isPowerOfTwo(5)).toBe(false);
+    expect(isPowerOfTwo(8)).toBe(true);
+    expect(isPowerOfTwo(21)).toBe(false);
+    expect(isPowerOfTwo(32)).toBe(true);
+    expect(isPowerOfTwo1(0)).toBe(false)
+    expect(isPowerOfTwo1(1)).toBe(true);
+    expect(isPowerOfTwo1(2)).toBe(true);
+    expect(isPowerOfTwo1(5)).toBe(false);
+    expect(isPowerOfTwo1(8)).toBe(true);
+    expect(isPowerOfTwo1(21)).toBe(false);
+    expect(isPowerOfTwo1(32)).toBe(true);
+    expect(isPowerOfTwoBitWise(0)).toBe(false)
+    expect(isPowerOfTwoBitWise(1)).toBe(true);
+    expect(isPowerOfTwoBitWise(2)).toBe(true);
+    expect(isPowerOfTwoBitWise(5)).toBe(false);
+    expect(isPowerOfTwoBitWise(8)).toBe(true);
+    expect(isPowerOfTwoBitWise(21)).toBe(false);
+    expect(isPowerOfTwoBitWise(32)).toBe(true);
+});
+test('Recursive Fibonacci:', () => {
+    expect(recursiveFibonacci(1)).toBe(0);
+    expect(recursiveFibonacci(2)).toBe(1);
+    expect(recursiveFibonacci(3)).toBe(1);
+    expect(recursiveFibonacci(4)).toBe(2);
+    expect(recursiveFibonacci(6)).toBe(5);
+    expect(recursiveFibonacci(8)).toBe(13);
+    expect(recursiveFibonacci1(0)).toBe(0);
+    expect(recursiveFibonacci1(1)).toBe(1);
+    expect(recursiveFibonacci1(2)).toBe(1);
+    expect(recursiveFibonacci1(3)).toBe(2);
+    expect(recursiveFibonacci1(5)).toBe(5);
+    expect(recursiveFibonacci1(7)).toBe(13);
+});
+test('Recursive Factorial:', () => {
+    expect(recursiveFactorial(4)).toBe(24);
+    expect(recursiveFactorial(5)).toBe(120);
+    expect(recursiveFactorial(0)).toBe(1);
+    expect(recursiveFactorial(1)).toBe(1);
+    /*
+    expect(recursiveFactorial1(4)).toBe(24);
+    expect(recursiveFactorial1(5)).toBe(120);
+    expect(recursiveFactorial1(0)).toBe(1);
+    expect(recursiveFactorial1(1)).toBe(1);
+    */
 });
 
 //CJS (Common JS) syntax
