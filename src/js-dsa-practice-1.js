@@ -4,9 +4,12 @@ export default function sum(a, b) {
     return a + b;
 };
 */
+//MATH ALGORITHMS
+
+//Sum of A Two Numbers
 export function sum(a, b) {
     return a + b; //(1)
-};//Big-O Time Complexity = 1 -> O(1) - Constant
+}; //Big-O Time Complexity = 1 -> O(1) - Constant
 export function substraction(a, b) {
     return a - b; //(1)
 }; //Big-O Time Complexity = 1 -> O(1) - Constant
@@ -167,11 +170,123 @@ export function recursiveFactorial(n) {
 } //Big-O Time Complexity = O(n) - Recursive
 
 
+//SEARCH ALGORITHM
+
+//Linear Search
+export function linearSearch(arr, t) {
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i] === t) {
+            return i; //(1n)
+        }
+    }
+    return -1; //(1)
+} //Big-O Time Complexity = n + 1 = n -> O(n) - Linear
+
+//Binary Search
+export function binarySearchOld(arr, t) {
+    let left = 0;
+    let right = arr.length - 1;
+    while (left !== right) {
+        let middle = Math.floor((left + right) / 2);
+        if (arr[middle] === t) {
+            return middle;
+        } else if (arr[middle] < t) {
+            left = middle + 1;
+        } else if (arr[middle] > t) {
+            right = middle - 1;
+        }
+    }
+    if (arr[left] === t) {
+        return left;
+    } else {
+        return -1;
+    }
+} //this is might be works for some cases, but wrong because we assume left !== right as our range (that we 
+//implemented it in while loop), why?
+//in our loop condition: while (left != right) -> this means:
+//stop when left == right, but still continue when left > right ??? (that's the flaw)
+//because: left > right  →  left != right  →  loop continues
+//but left > right should means: there's no search space left (yet our loop keeps running)
+//the dangerous case :
+//for example there's empty array as the input arr = [] (then we gonna messed up)
+//in my code, the left will be 0, right will be -1 (left = 0, right = -1)
+//left != right -> 0 != -1 -> true, then the loop runs, but the search space is actually already invalid.
+export function binarySearch(arr, t) {
+    let left = 0; //(1)
+    let right = arr.length - 1; //(1)
+    while (left <= right) {
+        let middle = Math.floor((left + right) / 2);
+        if (arr[middle] === t) {
+            return middle; //(1 log n)
+        } else if (arr[middle] < t) {
+            left = middle + 1; //(1 log n)
+        } else {
+            right = middle - 1; //(1 log n)
+        }
+    }
+    return -1; //(1)
+} //Big-O Time Complexity = 3 + 3 log n = (3 log n) -> O(log n) - Logaritmic
+//Pro Solution 1
+export function binarySearch1(arr, target) {
+    let leftIndex = 0;
+    let rightIndex = arr.length - 1;
+    while (leftIndex <= rightIndex) {
+        let middleIndex = Math.floor((leftIndex + rightIndex) / 2);
+        if (target === arr[middleIndex]) {
+            return middleIndex;
+        }
+        if (target < arr[middleIndex]) {
+            rightIndex = middleIndex - 1;
+        } else {
+            leftIndex = middleIndex + 1;
+        }
+    }
+    return -1;
+} //Big-O Time Complexity for this is O(log n) – Logaritmic
+
+//Recursive Binary Search
+export function recursiveBinarySearch(arr, t, leftIndex = 0, rightIndex = arr.length - 1) {
+    if (leftIndex > rightIndex) {
+        return -1;
+    }
+    let middleIndex = Math.floor((leftIndex + rightIndex) / 2);
+    if (t === arr[middleIndex]) {
+        return middleIndex;
+    }
+    if (t < arr[middleIndex]) {
+        return recursiveBinarySearch(arr, t, leftIndex, middleIndex - 1);
+    } else {
+        return recursiveBinarySearch(arr, t, middleIndex + 1, rightIndex);
+    }
+} //Big-O Time Complexity for this is O(log n) – Logaritmic
+//Pro Solution 1
+export function recursiveBinarySearch1(arr, target) {
+    return search1(arr, target, 0, arr.length - 1);
+}
+function search1(arr, target, leftIndex, rightIndex) {
+    if (leftIndex > rightIndex) {
+        return -1;
+    }
+    let middleIndex = Math.floor((leftIndex + rightIndex) / 2);
+    if (target === arr[middleIndex]) {
+        return middleIndex;
+    }
+    if (target < arr[middleIndex]) {
+        return search1(arr, target, leftIndex, middleIndex - 1);
+    } else {
+        return search1(arr, target, middleIndex + 1, rightIndex);
+    }
+} //the concept is same as my solution, but this time we're using search1 as our helper function, just in case we
+//just wanna keep our recursiveBinarySearch1 function still have 2 parameter (arr, target)
+//Big-O Time Complexity for this is O(log n) – Logaritmic. Because everytime we do the recursion, the input will be 
+//reduce by it's half.
+
+
 //CJS (Common JS) syntax
 /*
 function sum(a, b) {
     return a + b;
-};
+}; 
 
 module.exports = {sum};
 */

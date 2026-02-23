@@ -38,7 +38,10 @@ import {
     isPrime, isPrime1, isPrime2,
     isPowerOfTwo, isPowerOfTwo1, isPowerOfTwoBitWise,
     recursiveFibonacci, recursiveFibonacci1,
-    recursiveFactorial
+    recursiveFactorial,
+    linearSearch,
+    binarySearchOld, binarySearch, binarySearch1,
+    recursiveBinarySearch, recursiveBinarySearch1
 } from '../src/js-dsa-practice-1.js';
 
 test('should add two numbers correctly:', () => {
@@ -145,6 +148,38 @@ test('Recursive Factorial:', () => {
     expect(recursiveFactorial1(0)).toBe(1);
     expect(recursiveFactorial1(1)).toBe(1);
     */
+});
+
+test('Linear Search:', () => {
+    expect(linearSearch([-5, 2, 10, 4, 6], 10)).toBe(2);
+    expect(linearSearch([-5, 2, 10, 4, 6], 6)).toBe(4);
+    expect(linearSearch([-5, 2, 10, 4, 6], 20)).toBe(-1);
+});
+test('Binary Search:', () => {
+    expect(binarySearchOld([-5, 2, 4, 6, 10], 10)).toBe(4);
+    expect(binarySearchOld([-5, 2, 4, 6, 10], 6)).toBe(3);
+    expect(binarySearchOld([-5, 2, 4, 6, 10], 20)).toBe(-1);
+    /*
+    expect(binarySearchOld([], 2)).toBe(-1); //infinite loop, because our range is left != right (and that's wrong)
+    */
+    expect(binarySearch([-5, 2, 4, 6, 10], 10)).toBe(4);
+    expect(binarySearch([-5, 2, 4, 6, 10], 6)).toBe(3);
+    expect(binarySearch([-5, 2, 4, 6, 10], 20)).toBe(-1);
+    expect(binarySearch([], 2)).toBe(-1);
+    expect(binarySearch1([-5, 2, 4, 6, 10], 10)).toBe(4);
+    expect(binarySearch1([-5, 2, 4, 6, 10], 6)).toBe(3);
+    expect(binarySearch1([-5, 2, 4, 6, 10], 20)).toBe(-1);
+    expect(binarySearch1([], 2)).toBe(-1);
+});
+test('Recursive Binary Search:', () => {
+    expect(recursiveBinarySearch([-5, 2, 4, 6, 10], 10)).toBe(4);
+    expect(recursiveBinarySearch([-5, 2, 4, 6, 10], 6)).toBe(3);
+    expect(recursiveBinarySearch([-5, 2, 4, 6, 10], 20)).toBe(-1);
+    expect(recursiveBinarySearch([], 2)).toBe(-1);
+    expect(recursiveBinarySearch1([-5, 2, 4, 6, 10], 10)).toBe(4);
+    expect(recursiveBinarySearch1([-5, 2, 4, 6, 10], 6)).toBe(3);
+    expect(recursiveBinarySearch1([-5, 2, 4, 6, 10], 20)).toBe(-1);
+    expect(recursiveBinarySearch1([], 2)).toBe(-1);
 });
 
 //CJS (Common JS) syntax
